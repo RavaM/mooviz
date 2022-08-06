@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { iMovie } from "../../../types/types";
 import "./FilmRow.scss";
 
 interface iProps {
@@ -11,7 +12,7 @@ interface iProps {
 const baseUrl = "https://themoviedb.org/t/p/w500";
 
 export const FilmRow = ({ title, fetchUrl }: iProps) => {
-  const [movies, setMovies] = useState<any>(null);
+  const [movies, setMovies] = useState<iMovie[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +31,7 @@ export const FilmRow = ({ title, fetchUrl }: iProps) => {
         <h2 className="filmRow__title">{title}</h2>
 
         <div className="filmRow__posters">
-          {movies.map((movie: any) => (
+          {movies.map((movie: iMovie) => (
             <Link
               to={`/movie/${movie.id}`}
               className="filmRow__poster"

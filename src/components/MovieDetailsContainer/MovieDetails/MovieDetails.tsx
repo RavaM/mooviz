@@ -3,41 +3,27 @@ import { useEffect, useState } from "react";
 import requests from "../../../requests";
 
 interface iProps {
-  movieId?: string;
+  movie?: any;
 }
 
-export const MovieDetails = ({ movieId }: iProps) => {
-  const [movieDetails, setMovieDetails] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchDetails = async () => {
-      const request = await axios.get(requests.fetchMovieDetails(movieId));
-      setMovieDetails(request.data);
-      console.log(request.data);
-      return request;
-    };
-
-    fetchDetails();
-  }, [movieId]);
-
+export const MovieDetails = ({ movie }: iProps) => {
   return (
-    movieDetails && (
-      <div className="movieDetails__details">
-        <p>Original title: {movieDetails.original_title}</p>
-        <p>Release date: {movieDetails.release_date}</p>
+    movie && (
+      <div className="movie__details">
+        <p>Original title: {movie.original_title}</p>
+        <p>Release date: {movie.release_date}</p>
         <p>
-          Duration: {Math.floor(movieDetails.runtime / 60)} hours and{" "}
-          {movieDetails.runtime % 60}{" "}
-          {movieDetails.runtime % 60 ? "minutes" : "minute"}
+          Duration: {Math.floor(movie.runtime / 60)} hours and{" "}
+          {movie.runtime % 60} {movie.runtime % 60 ? "minutes" : "minute"}
         </p>
         <p>
           Budget:{" "}
-          {movieDetails.revenue.toLocaleString("en-US", {
+          {movie.revenue.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
           })}
         </p>
-        <p>Rating: {movieDetails.vote_average}</p>
+        <p>Rating: {movie.vote_average}</p>
       </div>
     )
   );

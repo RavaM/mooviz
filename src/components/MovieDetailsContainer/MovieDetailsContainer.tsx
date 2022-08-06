@@ -1,16 +1,17 @@
+import { iMovie } from "../../types/types";
 import { MovieCast } from "./MovieCast/MovieCast";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
 import "./MovieDetailsContainer.scss";
 
 interface iProps {
-  movieId?: string;
+  movie: iMovie;
 }
 
-export const MovieDetailsContainer = ({ movieId }: iProps) => {
+export const MovieDetailsContainer = ({ movie }: iProps) => {
   return (
     <div className="movieDetails__container">
-      <MovieDetails movieId={movieId} />
-      <MovieCast movieId={movieId} />
+      <MovieDetails movie={movie} />
+      <MovieCast movieId={movie.id} />
     </div>
   );
 };

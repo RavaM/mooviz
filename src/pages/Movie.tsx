@@ -5,13 +5,14 @@ import { MovieDetailsContainer } from "../components/MovieDetailsContainer/Movie
 
 import { BaseLayout } from "../layout/BaseLayout";
 import requests from "../requests";
+import { iMovie } from "../types/types";
 import "./Movie.scss";
 
 const baseUrl = "https://themoviedb.org/t/p/original";
 
 export const Movie = () => {
   let { movieId } = useParams();
-  const [movie, setMovie] = useState<any>(null);
+  const [movie, setMovie] = useState<iMovie | null>(null);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -31,7 +32,7 @@ export const Movie = () => {
         title={movie.title}
         bannerText={movie.overview}
       >
-        <MovieDetailsContainer movieId={movieId} />
+        <MovieDetailsContainer movie={movie} />
       </BaseLayout>
     )
   );

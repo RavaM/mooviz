@@ -1,4 +1,4 @@
-import { Banner, FilmList, Header, Hero } from "../components";
+import { FilmList } from "../components";
 import { BaseLayout } from "../layout/BaseLayout";
 
 export const Home = () => {

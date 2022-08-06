@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import requests from "../../../requests";
+import { iCredit } from "../../../types/types";
 
 interface iProps {
-  movieId?: string;
+  movieId?: number;
 }
 
 export const MovieCast = ({ movieId }: iProps) => {
-  const [credits, setCredits] = useState<any>(null);
+  const [credits, setCredits] = useState<iCredit | null>(null);
 
   useEffect(() => {
     const fetchCredits = async () => {
-      const request = await axios.get(requests.fetchMovieCredits(movieId));
+      const request = await axios.get(requests.fetchMovieCredits("" + movieId));
       setCredits(request.data);
       console.log(request.data);
       return request;
