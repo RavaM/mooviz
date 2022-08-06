@@ -3,4 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &__title {
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
 }

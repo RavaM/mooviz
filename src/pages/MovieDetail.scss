@@ -1,0 +1,7 @@
+.movieDetail__details {
+  display: flex;
+
+  & > div {
+    flex: 1;
+  }
+}

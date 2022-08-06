@@ -3,8 +3,11 @@ import { BaseLayout } from "../layout/BaseLayout";
 
 export const Home = () => {
   return (
-    <BaseLayout>
-      <Banner />
+    <BaseLayout
+      bgImage="/images/movies-poster.jpg"
+      title="MOOVIZ"
+      bannerText="Benvenuto nella tua collezione di film"
+    >
       <FilmList />
     </BaseLayout>
   );

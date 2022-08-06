@@ -30,12 +30,15 @@ export const FilmRow = ({ title, fetchUrl }: iProps) => {
 
       <div className="filmRow__posters">
         {movies.map((movie: any) => (
-          <Link to={`/movie/${movie.id}`} className="filmRow__poster">
+          <Link
+            to={`/movie/${movie.id}`}
+            className="filmRow__poster"
+            key={movie.id}
+          >
             <img
               className="filmRow__poster-image"
               src={`${baseUrl}${movie.poster_path}`}
               alt={movie.title}
-              key={movie.id}
               height={300}
               width={200}
             />
