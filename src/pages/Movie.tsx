@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MovieDetailsContainer } from "../components/MovieDetailsContainer/MovieDetailsContainer";
 
+import { MovieDetailsContainer, MovieReview } from "../components";
 import { BaseLayout } from "../layout/BaseLayout";
+
 import requests from "../requests";
 import { iMovie } from "../types/types";
 import "./Movie.scss";
@@ -33,6 +34,7 @@ export const Movie = () => {
         bannerText={movie.overview}
       >
         <MovieDetailsContainer movie={movie} />
+        <MovieReview></MovieReview>
       </BaseLayout>
     )
   );
