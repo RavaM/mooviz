@@ -1,0 +1,19 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  padding: 20px;
+  color: #fff;
+  border-bottom: 1px solid #282c3433;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+
+  &__logo {
+    margin-right: 20px;
+  }
+}
