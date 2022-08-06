@@ -1,8 +1,6 @@
 import "./App.scss";
 
-import { Banner } from "./components/Banner";
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
+import { Header, Banner, Hero, FilmList } from "./components/";
 
 function App() {
   return (
@@ -10,6 +8,7 @@ function App() {
       <Header />
       <Hero />
       <Banner />
+      <FilmList />
     </div>
   );
 }

@@ -1,0 +1,53 @@
+.filmRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__posters {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__poster {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius: 6px;
+
+    &:hover {
+      cursor: pointer;
+
+      .filmRow__poster-image {
+        transform: scale(1.08);
+      }
+
+      .filmRow__poster-overlay {
+        opacity: 1;
+      }
+    }
+
+    &-image {
+      object-fit: contain;
+      transition: all 0.4s;
+    }
+
+    &-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 0 20px;
+      background: #282c3499;
+      transition: all 0.4s;
+      opacity: 0;
+    }
+  }
+}

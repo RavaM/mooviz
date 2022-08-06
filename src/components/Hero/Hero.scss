@@ -1,7 +1,7 @@
 .hero {
   position: relative;
-  min-height: 600px;
-  background-image: url("../../public/images/movies-poster.jpg");
+  height: 100vh;
+  background-image: url("../../../public/images/movies-poster.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    height: 100px;
+    height: 50%;
     background: linear-gradient(#282c3400, #282c34);
   }
 
