@@ -1,0 +1,10 @@
+.movieDetails {
+  display: flex;
+  font-size: 24px;
+
+  & > * {
+    flex: 1;
+    text-align: center;
+    padding: 60px 20px;
+  }
+}

@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
+
+import logo from "../../logo.svg";
 import "./Header.scss";
 
 export const Header = () => {
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/" className="header__link">
         <img
           className="header__logo"
-          src="images/movie-videos-icon.svg"
+          src={logo}
           alt="Logo"
           width={30}
           height={30}

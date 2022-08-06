@@ -10,6 +10,8 @@ const requests = {
   fetchDocumentaries: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=99`,
   fetchMovieDetails: (movieId: string | undefined) =>
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`,
+  fetchMovieCredits: (movieId: string | undefined) =>
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`,
 };
 
 export default requests;

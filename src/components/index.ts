@@ -3,3 +3,4 @@ export * from "./Header/Header";
 export * from "./Hero/Hero";
 export * from "./FilmList/FilmList";
 export * from "./FilmRow/FilmRow";
+export * from "./MovieDetails/MovieDetails";
