@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./FilmRow.scss";
 
 interface iProps {
@@ -29,18 +30,19 @@ export const FilmRow = ({ title, fetchUrl }: iProps) => {
 
       <div className="filmRow__posters">
         {movies.map((movie: any) => (
-          <div className="filmRow__poster">
+          <Link to={`/movie/${movie.id}`} className="filmRow__poster">
             <img
               className="filmRow__poster-image"
               src={`${baseUrl}${movie.poster_path}`}
               alt={movie.title}
               key={movie.id}
               height={300}
+              width={200}
             />
             <div className="filmRow__poster-overlay">
               <p>{movie.title}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
