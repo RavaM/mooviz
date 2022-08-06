@@ -1,18 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MovieDetails } from "../components/MovieDetails/MovieDetails";
+import { MovieDetailsContainer } from "../components/MovieDetailsContainer/MovieDetailsContainer";
 
 import { BaseLayout } from "../layout/BaseLayout";
 import requests from "../requests";
-import "./MovieDetail.scss";
+import "./Movie.scss";
 
 const baseUrl = "https://themoviedb.org/t/p/original";
 
-export const MovieDetail = () => {
+export const Movie = () => {
   let { movieId } = useParams();
   const [movie, setMovie] = useState<any>(null);
-  const [credits, setCredits] = useState<any>(null);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -22,15 +21,7 @@ export const MovieDetail = () => {
       return request;
     };
 
-    const fetchCredits = async () => {
-      const request = await axios.get(requests.fetchMovieCredits(movieId));
-      setCredits(request.data);
-      console.log(request.data);
-      return request;
-    };
-
     fetchDetails();
-    fetchCredits();
   }, [movieId]);
 
   return (
@@ -40,7 +31,7 @@ export const MovieDetail = () => {
         title={movie.title}
         bannerText={movie.overview}
       >
-        <MovieDetails movieId={movieId} />
+        <MovieDetailsContainer movieId={movieId} />
       </BaseLayout>
     )
   );

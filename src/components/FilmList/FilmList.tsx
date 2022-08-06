@@ -1,4 +1,4 @@
-import { FilmRow } from "../FilmRow/FilmRow";
+import { FilmRow } from "./FilmRow/FilmRow";
 
 import requests from "../../requests";
 import "./FilmList.scss";
