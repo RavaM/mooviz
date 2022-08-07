@@ -7,7 +7,7 @@ import { ReviewsList } from "../components/ReviewsList/ReviewsList";
 import { BaseLayout } from "../layout/BaseLayout";
 
 import requests from "../requests";
-import { iMovie } from "../types/types";
+import { iMovie, iReview } from "../types/types";
 import "./Movie.scss";
 
 const baseUrl = "https://themoviedb.org/t/p/original";
@@ -15,6 +15,7 @@ const baseUrl = "https://themoviedb.org/t/p/original";
 export const Movie = () => {
   let { movieId } = useParams();
   const [movie, setMovie] = useState<iMovie | null>(null);
+  const [reviewsList, setReviewsList] = useState<iReview[]>([]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -35,8 +36,12 @@ export const Movie = () => {
         bannerText={movie.overview}
       >
         <MovieDetailsContainer movie={movie} />
-        <MovieReview movieId={movieId!} />
-        <ReviewsList movieId={movieId!} />
+        <MovieReview movieId={movieId!} setReviewsList={setReviewsList} />
+        <ReviewsList
+          reviewsList={reviewsList}
+          setReviewsList={setReviewsList}
+          movieId={movieId!}
+        />
       </BaseLayout>
     )
   );

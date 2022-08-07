@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { iReview } from "../../types/types";
 import { capitalize } from "../../utils/utils";
 import { StarRating } from "../StarRating/StarRating";
 import "./MovieReview.scss";
 
 interface iProps {
   movieId: string;
+  setReviewsList: React.Dispatch<React.SetStateAction<iReview[]>>;
 }
 
-export const MovieReview = ({ movieId }: iProps) => {
+export const MovieReview = ({ movieId, setReviewsList }: iProps) => {
   let criterion: ("direction" | "plot" | "photography" | "total")[] = [
     "direction",
     "plot",
@@ -25,17 +27,22 @@ export const MovieReview = ({ movieId }: iProps) => {
   const saveReview = () => {
     let reviews = JSON.parse(localStorage.getItem("reviews")!) || {};
     const reviewsForThisMovie = reviews[movieId] || [];
-    const submittedReview = {
-      [movieId]: [
-        ...reviewsForThisMovie,
-        {
-          review: review,
-          stars: stars,
-          date: new Date().toISOString().split("T")[0],
-        },
-      ],
+    let newReview: iReview = {
+      review: review,
+      stars: stars,
+      date: new Date().toISOString().split("T")[0],
     };
-    localStorage.setItem("reviews", JSON.stringify(submittedReview));
+    const submittedReview = {
+      [movieId]: [...reviewsForThisMovie, newReview],
+    };
+    localStorage.setItem(
+      "reviews",
+      JSON.stringify({
+        ...reviews,
+        ...submittedReview,
+      })
+    );
+    setReviewsList((prevReviews) => [...prevReviews, newReview]);
   };
 
   return (

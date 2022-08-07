@@ -50,3 +50,14 @@ export interface iCredit {
   crew: iPerson[];
   cast: iPerson[];
 }
+
+export interface iReview {
+  date: string;
+  review: string;
+  stars: {
+    direction: number;
+    photography: number;
+    plot: number;
+    total: number;
+  };
+}
