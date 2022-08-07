@@ -21,3 +21,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 20px;
+  border: 2px solid #fff;
+}
