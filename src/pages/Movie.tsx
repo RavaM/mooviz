@@ -21,7 +21,6 @@ export const Movie = () => {
     const fetchDetails = async () => {
       const request = await axios.get(requests.fetchMovieDetails(movieId));
       setMovie(request.data);
-      console.log(request.data);
       return request;
     };
 

@@ -24,7 +24,6 @@ export const FilmRow = ({ title, fetchUrl }: iProps) => {
     fetchData();
   }, [fetchUrl]);
 
-  console.log(movies);
   return (
     movies && (
       <div className="filmRow">

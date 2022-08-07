@@ -14,7 +14,6 @@ export const MovieCast = ({ movieId }: iProps) => {
     const fetchCredits = async () => {
       const request = await axios.get(requests.fetchMovieCredits("" + movieId));
       setCredits(request.data);
-      console.log(request.data);
       return request;
     };
     fetchCredits();

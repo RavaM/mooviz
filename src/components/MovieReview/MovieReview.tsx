@@ -42,7 +42,13 @@ export const MovieReview = ({ movieId, setReviewsList }: iProps) => {
         ...submittedReview,
       })
     );
-    setReviewsList((prevReviews) => [...prevReviews, newReview]);
+    setReviewsList((prevReviews) => {
+      if (prevReviews) {
+        return [...prevReviews, newReview];
+      } else {
+        return [newReview];
+      }
+    });
   };
 
   return (
