@@ -8,6 +8,7 @@ interface iProps {
   title: string;
   bannerText: string;
   watchlist?: number[];
+  watched?: number[];
   movie?: iMovie;
 }
 
@@ -18,6 +19,7 @@ export const BaseLayout = ({
   bannerText,
   movie,
   watchlist,
+  watched,
 }: iProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +33,7 @@ export const BaseLayout = ({
         title={title}
         movieId={movie?.id}
         watchlist={watchlist}
+        watched={watched}
       />
       <Banner bannerText={bannerText} />
       {children}

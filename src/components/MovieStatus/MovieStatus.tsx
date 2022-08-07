@@ -5,12 +5,18 @@ import "./MovieStatus.scss";
 interface iProps {
   children: React.ReactNode;
   watchlist?: number[];
+  watched?: number[];
   movieId?: number;
 }
 
-export const MovieStatus = ({ children, movieId, watchlist }: iProps) => {
+export const MovieStatus = ({
+  children,
+  movieId,
+  watchlist,
+  watched,
+}: iProps) => {
   const [inWatchlist, setInWatchlist] = useState(watchlist?.includes(movieId!));
-  const [isWatched, setIsWatched] = useState(false);
+  const [isWatched, setIsWatched] = useState(watched?.includes(movieId!));
 
   const handleWatchlist = () => {
     setInWatchlist((prev) => !prev);
@@ -21,20 +27,42 @@ export const MovieStatus = ({ children, movieId, watchlist }: iProps) => {
   };
 
   useEffect(() => {
-    console.log("this was called");
-    console.log(watchlist);
-    if (watchlist) {
-      if (inWatchlist && !watchlist.includes(movieId!)) {
-        watchlist?.push(movieId!);
-      } else {
-        let index = watchlist?.indexOf(movieId!);
-        if (index !== -1) {
-          watchlist?.splice(index!, 1);
+    const saveWatchlistToLocal = () => {
+      if (watchlist) {
+        if (inWatchlist) {
+          if (!watchlist.includes(movieId!)) {
+            watchlist?.push(movieId!);
+          }
+        } else {
+          let index = watchlist?.indexOf(movieId!);
+          if (index !== -1) {
+            watchlist?.splice(index!, 1);
+          }
         }
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
       }
-      localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    }
-  });
+    };
+
+    saveWatchlistToLocal();
+  }, [watchlist, inWatchlist, movieId]);
+
+  useEffect(() => {
+    const saveWatchedToLocal = () => {
+      if (watched) {
+        if (isWatched && !watched.includes(movieId!)) {
+          watched?.push(movieId!);
+        } else {
+          let index = watched?.indexOf(movieId!);
+          if (index !== -1) {
+            watched?.splice(index!, 1);
+          }
+        }
+        localStorage.setItem("watched", JSON.stringify(watched));
+      }
+    };
+
+    saveWatchedToLocal();
+  }, [isWatched, movieId, watched]);
 
   return (
     <div className="movieStatus">
