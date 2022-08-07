@@ -49,8 +49,10 @@ export const MovieStatus = ({
   useEffect(() => {
     const saveWatchedToLocal = () => {
       if (watched) {
-        if (isWatched && !watched.includes(movieId!)) {
-          watched?.push(movieId!);
+        if (isWatched) {
+          if (!watched.includes(movieId!)) {
+            watched?.push(movieId!);
+          }
         } else {
           let index = watched?.indexOf(movieId!);
           if (index !== -1) {
