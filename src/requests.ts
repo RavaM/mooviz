@@ -12,6 +12,8 @@ const requests = {
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`,
   fetchMovieCredits: (movieId: string | undefined) =>
     `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`,
+  fetchMoviesByName: (searchText: string) =>
+    `${BASE_URL}/search/movie?query=${searchText}&api_key=${API_KEY}`,
 };
 
 export default requests;

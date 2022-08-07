@@ -2,7 +2,7 @@ import { MovieStatus } from "../MovieStatus/MovieStatus";
 import "./Hero.scss";
 
 interface iProps {
-  bgImage: string;
+  bgImage?: string;
   title: string;
   movieId?: number;
   watchlist?: number[];
@@ -10,7 +10,7 @@ interface iProps {
 }
 
 export const Hero = ({
-  bgImage,
+  bgImage = "/images/movies-poster.jpg",
   title,
   movieId,
   watchlist,

@@ -4,9 +4,9 @@ import { iMovie } from "../types/types";
 
 interface iProps {
   children: React.ReactNode;
-  bgImage: string;
+  bgImage?: string;
   title: string;
-  bannerText: string;
+  bannerText?: string;
   watchlist?: number[];
   watched?: number[];
   movie?: iMovie;
@@ -35,7 +35,7 @@ export const BaseLayout = ({
         watchlist={watchlist}
         watched={watched}
       />
-      <Banner bannerText={bannerText} />
+      {bannerText && <Banner bannerText={bannerText} />}
       {children}
     </>
   );

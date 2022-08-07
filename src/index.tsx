@@ -4,6 +4,7 @@ import "./index.scss";
 import { Home } from "./pages/Home";
 import { Movie } from "./pages/Movie";
 import reportWebVitals from "./reportWebVitals";
+import { SearchResults } from "./pages/SearchResults";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,6 +14,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/movie/:movieId" element={<Movie />} />
+      <Route path="/movies/search/:searchText" element={<SearchResults />} />
     </Routes>
   </BrowserRouter>
 );

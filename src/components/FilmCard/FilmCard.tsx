@@ -10,16 +10,16 @@ interface iProps {
 
 export const FilmCard = ({ movie }: iProps) => {
   return (
-    <Link to={`/movie/${movie.id}`} className="filmRow__poster" key={movie.id}>
+    <Link to={`/movie/${movie.id}`} className="filmCard" key={movie.id}>
       <img
-        className="filmRow__poster-image"
+        className="filmCard-image"
         src={`${baseUrl}${movie.poster_path}`}
         alt={movie.title}
         height={300}
         width={200}
       />
-      <div className="filmRow__poster-overlay">
-        <p className="filmRow__poster-title">{movie.title}</p>
+      <div className="filmCard-overlay">
+        <p className="filmCard-title">{movie.title}</p>
       </div>
     </Link>
   );
