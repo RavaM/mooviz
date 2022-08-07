@@ -32,7 +32,6 @@ export const MovieStatus = ({ children, movieId, watchlist }: iProps) => {
           watchlist?.splice(index!, 1);
         }
       }
-      console.log("Porcodiosss");
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
     }
   });
