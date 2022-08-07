@@ -34,7 +34,7 @@ export const Movie = () => {
         bannerText={movie.overview}
       >
         <MovieDetailsContainer movie={movie} />
-        <MovieReview></MovieReview>
+        <MovieReview movieId={movieId!}></MovieReview>
       </BaseLayout>
     )
   );

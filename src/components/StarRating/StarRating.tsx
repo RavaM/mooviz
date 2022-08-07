@@ -1,8 +1,18 @@
 import { useState } from "react";
 import "./StarRating.scss";
 
-export const StarRating = () => {
-  const [rating, setRating] = useState(0);
+interface iProps {
+  setStars: any;
+  criteria: "direction" | "plot" | "photography" | "total";
+  stars: {
+    direction: number;
+    plot: number;
+    photography: number;
+    total: number;
+  };
+}
+
+export const StarRating = ({ stars, setStars, criteria }: iProps) => {
   const [hover, setHover] = useState(0);
   return (
     <div className="star-rating">
@@ -12,10 +22,15 @@ export const StarRating = () => {
           <button
             type="button"
             key={index}
-            className={index <= (hover || rating) ? "on" : "off"}
-            onClick={() => setRating(index)}
+            className={index <= (hover || stars) ? "on" : "off"}
+            onClick={() =>
+              setStars({
+                ...stars,
+                [criteria]: index,
+              })
+            }
             onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating)}
+            onMouseLeave={() => setHover(stars[criteria])}
           >
             <span className="star">&#9733;</span>
           </button>
