@@ -23,11 +23,17 @@ export const MovieReview = ({ movieId }: iProps) => {
   });
 
   const saveReview = () => {
+    let reviews = JSON.parse(localStorage.getItem("reviews")!) || {};
+    const reviewsForThisMovie = reviews[movieId] || [];
     const submittedReview = {
-      [movieId]: {
-        review: review,
-        stars: stars,
-      },
+      [movieId]: [
+        ...reviewsForThisMovie,
+        {
+          review: review,
+          stars: stars,
+          date: new Date().toISOString().split("T")[0],
+        },
+      ],
     };
     localStorage.setItem("reviews", JSON.stringify(submittedReview));
   };
@@ -47,7 +53,7 @@ export const MovieReview = ({ movieId }: iProps) => {
           onChange={(e) => setReview(e.target.value)}
         ></textarea>
         <div className="movieReview__stars">
-          {criterion.map((criteria, i) => (
+          {criterion.map((criteria) => (
             <div className="movieReview__stars-container" key={criteria}>
               <p>{capitalize(criteria)}:</p>
               <StarRating

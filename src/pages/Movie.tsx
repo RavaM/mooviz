@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { MovieDetailsContainer, MovieReview } from "../components";
+import { ReviewsList } from "../components/ReviewsList/ReviewsList";
 import { BaseLayout } from "../layout/BaseLayout";
 
 import requests from "../requests";
@@ -34,7 +35,8 @@ export const Movie = () => {
         bannerText={movie.overview}
       >
         <MovieDetailsContainer movie={movie} />
-        <MovieReview movieId={movieId!}></MovieReview>
+        <MovieReview movieId={movieId!} />
+        <ReviewsList movieId={movieId!} />
       </BaseLayout>
     )
   );
