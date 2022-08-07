@@ -16,6 +16,7 @@ export const Movie = () => {
   let { movieId } = useParams();
   const [movie, setMovie] = useState<iMovie | null>(null);
   const [reviewsList, setReviewsList] = useState<iReview[]>([]);
+  const [watchlist, setWatchlist] = useState<number[]>([]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -23,8 +24,14 @@ export const Movie = () => {
       setMovie(request.data);
       return request;
     };
+    const fetchWatchlist = () => {
+      const watchlist = JSON.parse(localStorage.getItem("watchlist")!) || [];
+      setWatchlist(watchlist);
+      return watchlist;
+    };
 
     fetchDetails();
+    fetchWatchlist();
   }, [movieId]);
 
   return (
@@ -33,6 +40,8 @@ export const Movie = () => {
         bgImage={`${baseUrl}${movie.backdrop_path}`}
         title={movie.title}
         bannerText={movie.overview}
+        movie={movie}
+        watchlist={watchlist}
       >
         <MovieDetailsContainer movie={movie} />
         <MovieReview movieId={movieId!} setReviewsList={setReviewsList} />
