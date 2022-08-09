@@ -11,8 +11,8 @@ interface iProps {
 
 export const FilmCard = ({ movie }: iProps) => {
   return (
-    <Link to={`/movie/${movie.id}`} className="filmCard" key={movie.id}>
-      <MovieStatus movieId={movie.id}>
+    <div className="filmCard">
+      <Link to={`/movie/${movie.id}`} key={movie.id}>
         <img
           className="filmCard__image"
           src={`${baseUrl}${movie.poster_path}`}
@@ -23,7 +23,8 @@ export const FilmCard = ({ movie }: iProps) => {
         <div className="filmCard__overlay">
           <p className="filmCard__title">{movie.title}</p>
         </div>
-      </MovieStatus>
-    </Link>
+      </Link>
+      <MovieStatus movieId={movie.id} />
+    </div>
   );
 };

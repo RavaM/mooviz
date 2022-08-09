@@ -4,7 +4,7 @@ import { Badge } from "../Badge/Badge";
 import "./MovieStatus.scss";
 
 interface iProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   movieId?: number;
   watchlist?: number[];
   watched?: number[];
@@ -19,30 +19,27 @@ export const MovieStatus = ({ children, movieId }: iProps) => {
 
   const handleWatchlist = () => {
     setInWatchlist((prev) => !prev);
-    setWatchlist((prev) => [...prev, movieId!]);
   };
 
   const handleWatched = () => {
     setIsWatched((prev) => !prev);
-    setWatched((prev) => [...prev, movieId!]);
   };
 
   useEffect(() => {
     const saveWatchlistToLocal = () => {
-      if (watchlist.length) {
-        if (inWatchlist) {
-          if (!watchlist.includes(movieId!)) {
-            setWatchlist((prev) => [...prev, movieId!]);
-          }
-        } else {
-          let index = watchlist?.indexOf(movieId!);
-          if (index !== -1) {
-            let updated = watchlist?.splice(index!, 1);
-            setWatched(updated);
-          }
+      if (inWatchlist) {
+        if (!watchlist.includes(movieId!)) {
+          setWatchlist((prev) => [...prev, movieId!]);
         }
-        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      } else {
+        let index = watchlist?.indexOf(movieId!);
+        if (index !== -1) {
+          setWatchlist((prev) =>
+            prev.filter((prevMovieId) => prevMovieId !== movieId)
+          );
+        }
       }
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
     };
 
     saveWatchlistToLocal();
@@ -50,20 +47,19 @@ export const MovieStatus = ({ children, movieId }: iProps) => {
 
   useEffect(() => {
     const saveWatchedToLocal = () => {
-      if (watched.length) {
-        if (isWatched) {
-          if (!watched.includes(movieId!)) {
-            setWatched((prev) => [...prev, movieId!]);
-          }
-        } else {
-          let index = watched?.indexOf(movieId!);
-          if (index !== -1) {
-            let updated = watched?.splice(index!, 1);
-            setWatched(updated);
-          }
+      if (isWatched) {
+        if (!watched.includes(movieId!)) {
+          setWatched((prev) => [...prev, movieId!]);
         }
-        localStorage.setItem("watched", JSON.stringify(watched));
+      } else {
+        let index = watched?.indexOf(movieId!);
+        if (index !== -1) {
+          setWatched((prev) =>
+            prev.filter((prevMovieId) => prevMovieId !== movieId)
+          );
+        }
       }
+      localStorage.setItem("watched", JSON.stringify(watched));
     };
 
     saveWatchedToLocal();
