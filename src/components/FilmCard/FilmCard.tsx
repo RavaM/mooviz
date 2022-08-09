@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { iMovie } from "../../types/types";
+import { MovieStatus } from "../MovieStatus/MovieStatus";
 import "./FilmCard.scss";
 
 const baseUrl = "https://themoviedb.org/t/p/w500";
@@ -11,16 +12,18 @@ interface iProps {
 export const FilmCard = ({ movie }: iProps) => {
   return (
     <Link to={`/movie/${movie.id}`} className="filmCard" key={movie.id}>
-      <img
-        className="filmCard__image"
-        src={`${baseUrl}${movie.poster_path}`}
-        alt={movie.title}
-        height={300}
-        width={200}
-      />
-      <div className="filmCard__overlay">
-        <p className="filmCard__title">{movie.title}</p>
-      </div>
+      <MovieStatus movieId={movie.id}>
+        <img
+          className="filmCard__image"
+          src={`${baseUrl}${movie.poster_path}`}
+          alt={movie.title}
+          height={300}
+          width={200}
+        />
+        <div className="filmCard__overlay">
+          <p className="filmCard__title">{movie.title}</p>
+        </div>
+      </MovieStatus>
     </Link>
   );
 };

@@ -43,4 +43,11 @@
   &__title {
     font-size: 20px;
   }
+
+  .movieStatus__badges {
+    flex-direction: column;
+    .badge {
+      font-size: 10px;
+    }
+  }
 }

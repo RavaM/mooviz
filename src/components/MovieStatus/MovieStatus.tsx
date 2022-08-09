@@ -1,42 +1,44 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MovieContext } from "../../App";
 import { Badge } from "../Badge/Badge";
 import "./MovieStatus.scss";
 
 interface iProps {
   children: React.ReactNode;
+  movieId?: number;
   watchlist?: number[];
   watched?: number[];
-  movieId?: number;
 }
 
-export const MovieStatus = ({
-  children,
-  movieId,
-  watchlist,
-  watched,
-}: iProps) => {
+export const MovieStatus = ({ children, movieId }: iProps) => {
+  const { watchlistCtx, watchedCtx } = useContext(MovieContext)!;
+  const [watchlist, setWatchlist] = watchlistCtx;
+  const [watched, setWatched] = watchedCtx;
   const [inWatchlist, setInWatchlist] = useState(watchlist?.includes(movieId!));
   const [isWatched, setIsWatched] = useState(watched?.includes(movieId!));
 
   const handleWatchlist = () => {
     setInWatchlist((prev) => !prev);
+    setWatchlist((prev) => [...prev, movieId!]);
   };
 
   const handleWatched = () => {
     setIsWatched((prev) => !prev);
+    setWatched((prev) => [...prev, movieId!]);
   };
 
   useEffect(() => {
     const saveWatchlistToLocal = () => {
-      if (watchlist) {
+      if (watchlist.length) {
         if (inWatchlist) {
           if (!watchlist.includes(movieId!)) {
-            watchlist?.push(movieId!);
+            setWatchlist((prev) => [...prev, movieId!]);
           }
         } else {
           let index = watchlist?.indexOf(movieId!);
           if (index !== -1) {
-            watchlist?.splice(index!, 1);
+            let updated = watchlist?.splice(index!, 1);
+            setWatched(updated);
           }
         }
         localStorage.setItem("watchlist", JSON.stringify(watchlist));
@@ -44,19 +46,20 @@ export const MovieStatus = ({
     };
 
     saveWatchlistToLocal();
-  }, [watchlist, inWatchlist, movieId]);
+  }, [watchlist, inWatchlist, movieId, setWatchlist]);
 
   useEffect(() => {
     const saveWatchedToLocal = () => {
-      if (watched) {
+      if (watched.length) {
         if (isWatched) {
           if (!watched.includes(movieId!)) {
-            watched?.push(movieId!);
+            setWatched((prev) => [...prev, movieId!]);
           }
         } else {
           let index = watched?.indexOf(movieId!);
           if (index !== -1) {
-            watched?.splice(index!, 1);
+            let updated = watched?.splice(index!, 1);
+            setWatched(updated);
           }
         }
         localStorage.setItem("watched", JSON.stringify(watched));
@@ -64,12 +67,12 @@ export const MovieStatus = ({
     };
 
     saveWatchedToLocal();
-  }, [isWatched, movieId, watched]);
+  }, [isWatched, movieId, watched, setWatched]);
 
   return (
     <div className="movieStatus">
       {children}
-      {watchlist && (
+      {movieId && (
         <div className="movieStatus__badges">
           <Badge onClick={handleWatchlist}>
             {inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
