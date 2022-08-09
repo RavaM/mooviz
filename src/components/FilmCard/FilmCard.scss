@@ -8,22 +8,22 @@
   &:hover {
     cursor: pointer;
 
-    .filmCard-image {
+    .filmCard__image {
       transform: scale(1.08);
       filter: grayscale(0.1) saturate(1.5);
     }
 
-    .filmCard-overlay {
+    .filmCard__overlay {
       opacity: 1;
     }
   }
 
-  &-image {
+  &__image {
     object-fit: cover;
     transition: all 0.4s;
   }
 
-  &-overlay {
+  &__overlay {
     position: absolute;
     top: 0;
     right: 0;
@@ -38,5 +38,9 @@
     color: #ffffff;
     transition: all 0.4s;
     opacity: 0;
+  }
+
+  &__title {
+    font-size: 20px;
   }
 }

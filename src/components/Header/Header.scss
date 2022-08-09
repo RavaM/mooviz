@@ -37,3 +37,11 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .header {
+    &.open {
+      flex-direction: column;
+    }
+  }
+}

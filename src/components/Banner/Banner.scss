@@ -1,13 +1,23 @@
 .banner {
-  height: 400px;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 2;
+  padding: 140px 20px 80px;
 
   &__title {
     max-width: 50%;
     margin: 0 auto;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    &__title {
+      max-width: 80%;
+      font-size: 20px;
+    }
   }
 }

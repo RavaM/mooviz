@@ -12,14 +12,14 @@ export const FilmCard = ({ movie }: iProps) => {
   return (
     <Link to={`/movie/${movie.id}`} className="filmCard" key={movie.id}>
       <img
-        className="filmCard-image"
+        className="filmCard__image"
         src={`${baseUrl}${movie.poster_path}`}
         alt={movie.title}
         height={300}
         width={200}
       />
-      <div className="filmCard-overlay">
-        <p className="filmCard-title">{movie.title}</p>
+      <div className="filmCard__overlay">
+        <p className="filmCard__title">{movie.title}</p>
       </div>
     </Link>
   );

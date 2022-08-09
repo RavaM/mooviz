@@ -6,7 +6,7 @@ interface iProps {
 
 export const Banner = ({ bannerText }: iProps) => {
   return (
-    <div className="banner">
+    <div className="banner container">
       <h2 className="banner__title">{bannerText}</h2>
     </div>
   );

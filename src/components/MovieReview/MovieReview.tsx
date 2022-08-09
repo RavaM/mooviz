@@ -10,7 +10,7 @@ interface iProps {
 }
 
 export const MovieReview = ({ movieId, setReviewsList }: iProps) => {
-  let criterion: ("direction" | "plot" | "photography" | "total")[] = [
+  const criterion: ("direction" | "plot" | "photography" | "total")[] = [
     "direction",
     "plot",
     "photography",
@@ -49,6 +49,9 @@ export const MovieReview = ({ movieId, setReviewsList }: iProps) => {
         return [newReview];
       }
     });
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 1000);
   };
 
   return (

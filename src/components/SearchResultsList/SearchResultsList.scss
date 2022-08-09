@@ -6,3 +6,18 @@
   justify-content: center;
   gap: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .searchResultsList {
+    .filmCard {
+      max-width: 150px;
+      max-height: 225px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+}
