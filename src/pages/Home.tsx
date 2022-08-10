@@ -6,7 +6,7 @@ export const Home = () => {
     <BaseLayout
       bgImage="/images/movies-poster.jpg"
       title="MOOVIZ"
-      bannerText="Benvenuto nella tua collezione di film"
+      bannerText="Welcome to your personal movie collection"
     >
       <FilmList />
     </BaseLayout>
