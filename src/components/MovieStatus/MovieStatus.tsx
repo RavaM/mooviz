@@ -3,14 +3,18 @@ import { MovieContext } from "../../App";
 import { Badge } from "../Badge/Badge";
 import "./MovieStatus.scss";
 
+import watchlistLogo from "../../assets/icons/clock-solid.svg";
+import watchlistRemoveLogo from "../../assets/icons/ban-solid.svg";
+import watchedLogo from "../../assets/icons/eye-solid.svg";
+import watchedRemoveLogo from "../../assets/icons/eye-slash-solid.svg";
+
 interface iProps {
   children?: React.ReactNode;
   movieId?: number;
-  watchlist?: number[];
-  watched?: number[];
+  showText?: boolean;
 }
 
-export const MovieStatus = ({ children, movieId }: iProps) => {
+export const MovieStatus = ({ children, movieId, showText = true }: iProps) => {
   const { watchlistCtx, watchedCtx } = useContext(MovieContext)!;
   const [watchlist, setWatchlist] = watchlistCtx;
   const [watched, setWatched] = watchedCtx;
@@ -70,11 +74,35 @@ export const MovieStatus = ({ children, movieId }: iProps) => {
       {children}
       {movieId && (
         <div className="movieStatus__badges">
-          <Badge onClick={handleWatchlist}>
-            {inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+          <Badge
+            onClick={handleWatchlist}
+            tooltip={inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+          >
+            <img
+              src={inWatchlist ? watchlistRemoveLogo : watchlistLogo}
+              alt="Watchlist Logo"
+              width={10}
+              height={10}
+            />
+            {showText && (
+              <span>
+                {inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+              </span>
+            )}
           </Badge>
-          <Badge onClick={handleWatched}>
-            {isWatched ? "Unmark watched" : "Mark as watched"}
+          <Badge
+            onClick={handleWatched}
+            tooltip={isWatched ? "Unmark watched" : "Mark as watched"}
+          >
+            <img
+              src={isWatched ? watchedRemoveLogo : watchedLogo}
+              alt="Watched logo"
+              width={10}
+              height={10}
+            />
+            {showText && (
+              <span>{isWatched ? "Unmark watched" : "Mark as watched"}</span>
+            )}
           </Badge>
         </div>
       )}

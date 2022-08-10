@@ -24,7 +24,7 @@ export const FilmCard = ({ movie }: iProps) => {
           <p className="filmCard__title">{movie.title}</p>
         </div>
       </Link>
-      <MovieStatus movieId={movie.id} />
+      <MovieStatus showText={false} movieId={movie.id} />
     </div>
   );
 };

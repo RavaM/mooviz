@@ -17,7 +17,7 @@ export const Hero = ({
   watched,
 }: iProps) => {
   return (
-    <MovieStatus movieId={movieId} watchlist={watchlist} watched={watched}>
+    <MovieStatus movieId={movieId}>
       <div className="hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <h1 className="hero__title">{title}</h1>
       </div>
