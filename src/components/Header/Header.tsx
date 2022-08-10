@@ -28,19 +28,18 @@ export const Header = () => {
         />
         <h2 className="header__title">Mooviz</h2>
       </Link>
+      {searchOpen && (
+        <SearchBar
+          setSearch={setSearchOpen}
+          className={searchOpen ? "open" : "closed"}
+          myRef={ref}
+        />
+      )}
       <div className="header__options-container">
-        {searchOpen && (
-          <SearchBar
-            setSearch={setSearchOpen}
-            className={searchOpen ? "open" : "closed"}
-            myRef={ref}
-          />
-        )}
-        {!searchOpen && (
-          <Link to="/watchlist" className="header__link">
-            WATCHLIST
-          </Link>
-        )}
+        <Link to="/watchlist" className="header__link">
+          WATCHLIST
+        </Link>
+
         <img
           src={searchIcon}
           alt="Search icon"

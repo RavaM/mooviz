@@ -8,13 +8,13 @@ import { iMovie } from "../types/types";
 
 export const Watchlist = () => {
   const { watchlistCtx } = useContext(MovieContext)!;
-  const [movies, setMovies] = watchlistCtx;
+  const [watchlistIds] = watchlistCtx;
   const [watchlistMovies, setWatchlistMovies] = useState<iMovie[]>([]);
 
-  const watchlistArray: iMovie[] = [];
   useEffect(() => {
+    const watchlistArray: iMovie[] = [];
     const fetchWatchlist = async () => {
-      for (let movieId of movies) {
+      for (let movieId of watchlistIds) {
         const request = await axios.get(
           requests.fetchMovieDetails("" + movieId)
         );
@@ -25,11 +25,16 @@ export const Watchlist = () => {
     };
 
     fetchWatchlist();
-  }, [movies]);
+  }, [watchlistIds]);
 
   return (
-    <BaseLayout title="Watchlist">
-      <SearchResultsList movies={watchlistMovies} />
+    <BaseLayout
+      title="Watchlist"
+      bannerText={
+        !watchlistMovies.length ? "You have no movies in the watchlist" : ""
+      }
+    >
+      {watchlistMovies.length && <SearchResultsList movies={watchlistMovies} />}
     </BaseLayout>
   );
 };
