@@ -1,13 +1,15 @@
-.searchbar {
+.searchBar {
   width: 50%;
   transition: all 0.6s ease-in-out;
 
   &.closed {
     opacity: 0;
+    visibility: hidden;
   }
 
   &.open {
     opacity: 1;
+    visibility: visible;
   }
 
   &__input {
@@ -26,7 +28,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .searchbar {
+  .searchBar {
     width: 100%;
   }
 }

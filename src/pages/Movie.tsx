@@ -2,8 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { MovieDetailsContainer, MovieReview } from "../components";
-import { ReviewsList } from "../components/ReviewsList/ReviewsList";
+import { MovieDetailsContainer, MovieReview, ReviewsList } from "../components";
 import { BaseLayout } from "../layout/BaseLayout";
 
 import requests from "../requests";

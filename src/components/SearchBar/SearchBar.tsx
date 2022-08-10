@@ -19,11 +19,11 @@ export const SearchBar = ({ className, setSearch, myRef }: iProps) => {
   };
 
   return (
-    <form className={`searchbar ${className}`} onSubmit={handleSearch}>
+    <form className={`searchBar ${className}`} onSubmit={handleSearch}>
       <input
         type="text"
         placeholder="Search a movie name"
-        className="searchbar__input"
+        className="searchBar__input"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         ref={myRef}

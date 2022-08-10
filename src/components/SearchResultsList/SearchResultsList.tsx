@@ -1,27 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import requests from "../../requests";
+import { useEffect } from "react";
+import { FilmCard } from "../../components";
 import { iMovie } from "../../types/types";
-import { FilmCard } from "../FilmCard/FilmCard";
 import "./SearchResultsList.scss";
 
 interface iProps {
-  searchText?: string;
+  movies: iMovie[] | null;
 }
 
-export const SearchResultsList = ({ searchText }: iProps) => {
-  const [movies, setMovies] = useState<iMovie[] | null>(null);
-
+export const SearchResultsList = ({ movies }: iProps) => {
   useEffect(() => {
-    const fetchData = async () => {
-      const request = await axios.get(requests.fetchMoviesByName(searchText!));
-      setMovies(request.data.results);
-      return request;
-    };
-
-    window.scrollTo(0, 0);
-    fetchData();
-  }, [searchText]);
+    console.log("this is called");
+    console.log("movies are", movies);
+  }, [movies]);
 
   return (
     movies && (

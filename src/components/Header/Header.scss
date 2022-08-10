@@ -36,6 +36,13 @@
   &__searchIcon {
     cursor: pointer;
   }
+
+  &__options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
 }
 
 @media screen and (max-width: 480px) {

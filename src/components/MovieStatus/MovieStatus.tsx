@@ -38,9 +38,9 @@ export const MovieStatus = ({ children, movieId, showText = true }: iProps) => {
       } else {
         let index = watchlist?.indexOf(movieId!);
         if (index !== -1) {
-          setWatchlist((prev) =>
-            prev.filter((prevMovieId) => prevMovieId !== movieId)
-          );
+          setWatchlist((prev) => {
+            return prev.filter((prevMovieId) => prevMovieId !== movieId);
+          });
         }
       }
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
