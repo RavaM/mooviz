@@ -11,6 +11,7 @@ export const Watchlist = () => {
   const [movies, setMovies] = watchlistCtx;
   const [watchlistMovies, setWatchlistMovies] = useState<iMovie[]>([]);
 
+  const watchlistArray: iMovie[] = [];
   useEffect(() => {
     const fetchWatchlist = async () => {
       for (let movieId of movies) {
@@ -18,11 +19,9 @@ export const Watchlist = () => {
           requests.fetchMovieDetails("" + movieId)
         );
         // This line is the problem
-        setWatchlistMovies((prev) => [
-          ...prev.filter((movie) => movie.id !== movieId),
-          request.data,
-        ]);
+        watchlistArray.push(request.data);
       }
+      setWatchlistMovies(watchlistArray);
     };
 
     fetchWatchlist();
