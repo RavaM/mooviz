@@ -37,5 +37,15 @@
 @media screen and (max-width: 480px) {
   .searchBar {
     width: 100%;
+
+    &__input {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .searchBar {
+    width: 80%;
   }
 }

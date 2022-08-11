@@ -68,3 +68,19 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .movieReview {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__button {
+      align-self: center;
+    }
+
+    &__stars {
+      align-items: flex-start;
+    }
+  }
+}

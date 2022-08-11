@@ -22,7 +22,7 @@ export const StarRating = ({ stars, setStars, criteria }: iProps) => {
           <button
             type="button"
             key={index}
-            className={index <= (hover || stars) ? "on" : "off"}
+            className={`star ${index <= (hover || stars) ? "on" : "off"}`}
             onClick={() =>
               setStars({
                 ...stars,

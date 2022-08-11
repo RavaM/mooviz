@@ -4,11 +4,18 @@ button {
   outline: none;
   cursor: pointer;
 }
+.star {
+  font-size: 30px;
+}
 .on {
   color: rgb(251, 255, 0);
-  font-size: 30px;
 }
 .off {
   color: #ccc;
-  font-size: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .star {
+    font-size: 24px;
+  }
 }

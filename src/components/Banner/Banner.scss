@@ -16,8 +16,18 @@
 @media screen and (max-width: 480px) {
   .banner {
     &__title {
-      max-width: 80%;
       font-size: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 1024px) {
+  .banner {
+    &__title {
+      max-width: 80%;
     }
   }
 }
