@@ -9,7 +9,7 @@ import { iMovie } from "../types/types";
 export const Watchlist = () => {
   const { watchlistCtx } = useContext(MovieContext)!;
   const [watchlistIds] = watchlistCtx;
-  const [watchlistMovies, setWatchlistMovies] = useState<iMovie[]>([]);
+  const [watchlistMovies, setWatchlistMovies] = useState<iMovie[] | null>(null);
 
   useEffect(() => {
     const watchlistArray: iMovie[] = [];
@@ -31,10 +31,10 @@ export const Watchlist = () => {
     <BaseLayout
       title="Watchlist"
       bannerText={
-        !watchlistMovies.length ? "You have no movies in the watchlist" : ""
+        !watchlistMovies?.length ? "You have no movies in the watchlist" : ""
       }
     >
-      {watchlistMovies.length && <SearchResultsList movies={watchlistMovies} />}
+      {watchlistMovies && <SearchResultsList movies={watchlistMovies} />}
     </BaseLayout>
   );
 };
