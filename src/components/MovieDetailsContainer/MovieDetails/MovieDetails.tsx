@@ -1,7 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import requests from "../../../requests";
-
 interface iProps {
   movie?: any;
 }

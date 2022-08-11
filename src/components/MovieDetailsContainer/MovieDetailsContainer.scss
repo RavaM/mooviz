@@ -4,7 +4,6 @@
 
   & > * {
     flex: 1;
-    text-align: center;
     padding: 0 20px;
   }
 }
@@ -13,5 +12,11 @@
   .movieDetails__container {
     flex-direction: column;
     padding: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .movieDetails__container {
+    text-align: left;
   }
 }

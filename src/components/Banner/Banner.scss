@@ -18,6 +18,15 @@
   .banner {
     &__title {
       font-size: 20px;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .banner {
+    &__title {
+      max-width: 90%;
     }
   }
 }
