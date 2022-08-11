@@ -35,8 +35,6 @@ const MovieProvider = (props: any) => {
     JSON.parse(localStorage.getItem("watched")!) || []
   );
 
-  console.log("watchlist is:", watchlist);
-
   return (
     <MovieContext.Provider
       value={{

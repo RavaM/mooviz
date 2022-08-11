@@ -12,7 +12,6 @@ export const Header = () => {
 
   const handleOpenSearch = () => {
     setSearchOpen((prev) => !prev);
-    console.log(ref.current);
     ref.current?.focus();
   };
 
