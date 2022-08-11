@@ -1,6 +1,6 @@
 {
-  "name": "Mooviz: your personal movie portal",
-  "short_name": "Mooviz",
+  "name": "Mooviz",
+  "short_name": "Mooviz: your personal movie diary",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
