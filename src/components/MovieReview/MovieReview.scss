@@ -81,6 +81,11 @@
 
     &__stars {
       align-items: flex-start;
+      padding: 0;
+
+      &-container {
+        gap: 5px;
+      }
     }
   }
 }
