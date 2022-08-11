@@ -9,3 +9,14 @@
   align-items: center;
   gap: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .badge {
+    font-size: 12px;
+
+    .badge__icon {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

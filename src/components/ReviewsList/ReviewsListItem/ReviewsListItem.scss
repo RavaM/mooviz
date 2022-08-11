@@ -1,20 +1,47 @@
-.reviewList__item {
-  width: 100%;
-  height: 60px;
-  background: #fff;
-  color: #333;
-  border-radius: 16px;
-  border: 1px solid #333;
-  font-weight: bold;
-  font-size: 20px;
-  display: flex;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-between;
+.reviewList {
+  &__item {
+    &-summary {
+      width: 100%;
+      height: 60px;
+      background: #fff;
+      color: #333;
+      border-radius: 16px;
+      font-weight: bold;
+      font-size: 20px;
+      display: flex;
+      padding: 20px;
+      align-items: center;
+      justify-content: space-between;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-body {
+      color: #333;
+      background: #fff;
+      padding: 20px;
+      text-align: start;
+      margin: 0;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+
+    &[open] {
+      .reviewList__item-summary {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 1px solid #333;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {
   .reviewList__item {
-    font-size: 12px;
+    &-summary {
+      font-size: 16px;
+    }
   }
 }

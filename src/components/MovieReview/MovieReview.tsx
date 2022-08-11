@@ -51,7 +51,7 @@ export const MovieReview = ({ movieId, setReviewsList }: iProps) => {
     });
     setTimeout(() => {
       window.scrollTo(0, document.body.scrollHeight);
-    }, 1000);
+    }, 100);
   };
 
   return (

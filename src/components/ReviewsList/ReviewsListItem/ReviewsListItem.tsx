@@ -8,10 +8,13 @@ interface iProps {
 
 export const ReviewsListItem = ({ review, index }: iProps) => {
   return (
-    <div className="reviewList__item">
-      <p>Review #{index + 1}</p>
-      <p>Dated {review.date}</p>
-      <p>Your total rating was {review.stars.total} stars</p>
-    </div>
+    <details className="reviewList__item">
+      <summary className="reviewList__item-summary">
+        <p>Review #{index + 1}</p>
+        <p>Dated {review.date}</p>
+        <p>Your total rating was {review.stars.total} stars</p>
+      </summary>
+      <p className="reviewList__item-body">{review.review}</p>
+    </details>
   );
 };

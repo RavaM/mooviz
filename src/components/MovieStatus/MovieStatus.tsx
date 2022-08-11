@@ -77,13 +77,9 @@ export const MovieStatus = ({ children, movieId, showText = true }: iProps) => {
           <Badge
             onClick={handleWatchlist}
             tooltip={inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
+            iconAlt="Watchlist Logo"
+            iconSrc={inWatchlist ? watchlistRemoveLogo : watchlistLogo}
           >
-            <img
-              src={inWatchlist ? watchlistRemoveLogo : watchlistLogo}
-              alt="Watchlist Logo"
-              width={10}
-              height={10}
-            />
             {showText && (
               <span>
                 {inWatchlist ? "Remove from watchlist" : "Add to watchlist"}
@@ -93,13 +89,9 @@ export const MovieStatus = ({ children, movieId, showText = true }: iProps) => {
           <Badge
             onClick={handleWatched}
             tooltip={isWatched ? "Unmark watched" : "Mark as watched"}
+            iconAlt="Watched logo"
+            iconSrc={isWatched ? watchedRemoveLogo : watchedLogo}
           >
-            <img
-              src={isWatched ? watchedRemoveLogo : watchedLogo}
-              alt="Watched logo"
-              width={10}
-              height={10}
-            />
             {showText && (
               <span>{isWatched ? "Unmark watched" : "Mark as watched"}</span>
             )}
